@@ -72,13 +72,7 @@ h2 {
 }
 
 h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(to right, var(--accent), var(--accent-hover));
-  border-radius: 2px;
-  margin: 10px auto 0;
+  display: none;
 }
 
 h3 {
