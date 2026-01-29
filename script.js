@@ -235,29 +235,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Google Scholar Stats
-    async function fetchScholarStats() {
-        try {
-            // Cache busting to ensure fresh data
-            const response = await fetch('scholar_stats.json?v=' + new Date().getTime());
-            if (!response.ok) throw new Error('Failed to load stats');
 
-            const stats = await response.json();
-
-            if (stats.citations) {
-                document.getElementById('stat-citations').textContent = stats.citations;
-            }
-            if (stats.h_index) {
-                document.getElementById('stat-h-index').textContent = stats.h_index;
-            }
-            if (stats.i10_index) {
-                document.getElementById('stat-i10-index').textContent = stats.i10_index;
-            }
-        } catch (error) {
-            console.error('Error fetching scholar stats:', error);
-            // Optional: fallback to default static values if needed
-        }
-    }
-
-    fetchScholarStats();
 });

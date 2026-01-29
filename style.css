@@ -880,6 +880,7 @@ Code: \f121 (code)
   color: var(--text-secondary);
   font-size: 0.85rem;
   line-height: 1.4;
+  text-align: left;
 }
 
 .social-links-footer {
