@@ -235,5 +235,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Contact Form Handling
+    const contactForm = document.getElementById("contact-form");
+    const formStatus = document.getElementById("form-status");
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const data = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: contactForm.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatus.textContent = "Thank you! I will give reply as soon as possible.";
+                    formStatus.className = "success"; // Add class for styling
+                    contactForm.reset(); // Clear the form
+                } else {
+                    const jsonData = await response.json();
+                    if (Object.hasOwn(jsonData, 'errors')) {
+                        formStatus.textContent = jsonData.errors.map(error => error.message).join(", ");
+                    } else {
+                        formStatus.textContent = "Oops! There was a problem submitting your form";
+                    }
+                    formStatus.className = "error";
+                }
+            } catch (error) {
+                formStatus.textContent = "Oops! There was a problem submitting your form";
+                formStatus.className = "error";
+            }
+        });
+    }
 
 });

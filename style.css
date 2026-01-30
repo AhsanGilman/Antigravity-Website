@@ -1342,3 +1342,20 @@ footer {
     text-align: center;
   }
 }
+
+#form-status {
+  margin-top: 1rem;
+  font-weight: 600;
+  text-align: center;
+  min-height: 1.5rem;
+}
+
+#form-status.success {
+  color: #10b981;
+  /* Green */
+}
+
+#form-status.error {
+  color: #ef4444;
+  /* Red */
+}
